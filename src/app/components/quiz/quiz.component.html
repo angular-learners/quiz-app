@@ -1,0 +1,22 @@
+<div class="container mt-5 m-auto">
+    <div class="card w-50 p-2">
+        <div class="card-title row">
+            <div class="col-md-7">
+                <h4 class="ml-2">{{(questionIndex+1)}}.{{questions[questionIndex]?.question}}</h4>
+            </div>
+            <div class="col-md-5"><h4>{{timer}} <span class="fs">sec left</span></h4><span>Answerd Out of  {{questionIndex}}/{{questions.length}}</span></div>
+        </div>
+        <div class="card-body" *ngFor="let item of questions[questionIndex]?.options;let i=index">
+             <div class="bg-custom  p-1 row">
+                 <div class="col-md-11">{{i+1}}.{{item.option}}</div>
+                 <div class="form-check col-md-1">
+                    <input  [(ngModel)]="selectedOption" type="radio"  [value]="item.option"  name="flexRadioDefault" class="form-check-input" id="flexRadioDefault2{{i}}"> 
+                  </div>
+                  
+             </div>
+        </div>
+        <div class="card-footer">
+            <button type="button" class="btn btn-primary" (click)="nextQuestion()"> {{questionIndex==4 ? 'Complete' :'Next'}}</button>
+        </div>
+    </div>
+</div>
